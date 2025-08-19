@@ -1,30 +1,35 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Constants from 'expo-constants';
-
+import Constants from "expo-constants";
 
 export default function Um() {
   return (
     <>
-    {/* <StatusBar hidden /> */}
+      {/* <StatusBar hidden /> */}
       <View style={styles.master}>
 
         <View style={styles.container1}>
-        
 
-            <View style={styles.container3}>
-              <Text>333333333333333333333!</Text>
+          <View style={styles.container3}>
+            <Text>333333333333333333333!</Text>
+          </View>
+
+          <View style={styles.container4}>
+
+            <View style={styles.container5}>
+              <Text>555555555555555555555!</Text>
+            </View>
+            <View style={styles.container6}>
+              <Text>666666666666666666666!</Text>
             </View>
 
-            <View style={styles.container4}>
-              <Text>444444444444444444444!</Text>
-            </View>
+          </View>
+
         </View>
 
         <View style={styles.container2}>
           <Text>222222222222222222222!</Text>
         </View>
-
       </View>
     </>
   );
@@ -41,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   container1: {
-    flexDirection:"row",
+    flexDirection: "row",
     flex: 1,
     width: "100%",
     backgroundColor: "crimson",
@@ -74,5 +79,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
   },
-}
-);
+
+  container5: {
+    flex: 0.5,
+    width: "100%",
+    backgroundColor: "teal",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+
+  container6: {
+    flex: 0.5,
+    width: "100%",
+    backgroundColor: "skyblue",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+});
