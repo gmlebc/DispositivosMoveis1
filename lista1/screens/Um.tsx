@@ -10,15 +10,19 @@ export default function Um() {
       <View style={styles.master}>
 
         <View style={styles.container1}>
-          <View>
-            <Text>1111111111111111111!</Text>
-            <StatusBar style="auto" />
-          </View>
+        
+
+            <View style={styles.container3}>
+              <Text>333333333333333333333!</Text>
+            </View>
+
+            <View style={styles.container4}>
+              <Text>444444444444444444444!</Text>
+            </View>
         </View>
 
         <View style={styles.container2}>
           <Text>222222222222222222222!</Text>
-          <StatusBar style="auto" />
         </View>
 
       </View>
@@ -37,6 +41,7 @@ const styles = StyleSheet.create({
   },
 
   container1: {
+    flexDirection:"row",
     flex: 1,
     width: "100%",
     backgroundColor: "crimson",
@@ -51,6 +56,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-}
 
+  container3: {
+    flex: 0.5,
+    width: "100%",
+    backgroundColor: "lime",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+
+  container4: {
+    flex: 0.5,
+    width: "100%",
+    backgroundColor: "aquamarine",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+}
 );
