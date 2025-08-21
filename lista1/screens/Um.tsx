@@ -1,6 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import Constants from "expo-constants";
+import React from "react";
+// import { Image } from 'expo-image';
+import Logo from "../assets/adaptive-icon.png";
 
 export default function Um() {
   return (
@@ -28,7 +31,11 @@ export default function Um() {
         </View>
 
         <View style={styles.container2}>
-          <Text>222222222222222222222!</Text>
+          <Image 
+            source={Logo}
+            style={styles.image}
+            resizeMode="contain"
+          />
         </View>
       </View>
     </>
@@ -97,4 +104,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
   },
+  image: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#0553',
+    alignSelf: 'center',
+  },
+  
 });
