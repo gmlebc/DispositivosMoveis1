@@ -10,32 +10,23 @@ export default function Um() {
     <>
       {/* <StatusBar hidden /> */}
       <View style={styles.master}>
-
         <View style={styles.container1}>
-
           <View style={styles.container3}>
-            <Text>333333333333333333333!</Text>
+            <Image source={Logo} style={styles.image} resizeMode="contain" />
           </View>
 
           <View style={styles.container4}>
-
             <View style={styles.container5}>
-              <Text>555555555555555555555!</Text>
+              <Image source={Logo} style={styles.image} resizeMode="contain" />
             </View>
             <View style={styles.container6}>
-              <Text>666666666666666666666!</Text>
+              <Image source={Logo} style={styles.image} resizeMode="contain" />
             </View>
-
           </View>
-
         </View>
 
         <View style={styles.container2}>
-          <Image 
-            source={Logo}
-            style={styles.image}
-            resizeMode="contain"
-          />
+          <Image source={Logo} style={styles.image} resizeMode="contain" />
         </View>
       </View>
     </>
@@ -106,9 +97,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: '100%',
-    backgroundColor: '#0553',
-    alignSelf: 'center',
+    width: "100%",
+    backgroundColor: "#0553",
+    alignSelf: "center",
   },
-  
 });
