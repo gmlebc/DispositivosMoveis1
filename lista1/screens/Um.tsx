@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 import React from "react";
 // import { Image } from 'expo-image';
@@ -12,21 +12,29 @@ export default function Um() {
       <View style={styles.master}>
         <View style={styles.container1}>
           <View style={styles.container3}>
-            <Image source={Logo} style={styles.image} resizeMode="contain" />
+            <TouchableOpacity onPress={() => {alert('BOA NOITE')}} style={styles.button}>
+              <Image source={Logo} style={styles.image} resizeMode="contain" />
+            </TouchableOpacity>
           </View>
 
           <View style={styles.container4}>
             <View style={styles.container5}>
-              <Image source={Logo} style={styles.image} resizeMode="contain" />
+                <TouchableOpacity onPress={() => {alert('BOA NOITE')}} style={styles.button}>
+                <Image source={Logo} style={styles.image} resizeMode="contain" />
+              </TouchableOpacity>
             </View>
             <View style={styles.container6}>
-              <Image source={Logo} style={styles.image} resizeMode="contain" />
+            <TouchableOpacity onPress={() => {alert('BOA NOITE')}} style={styles.button}>
+            <Image source={Logo} style={styles.image} resizeMode="contain" />
+          </TouchableOpacity>
             </View>
           </View>
         </View>
 
         <View style={styles.container2}>
-          <Image source={Logo} style={styles.image} resizeMode="contain" />
+          <TouchableOpacity onPress={() => {alert('BOA NOITE')}} style={styles.button}>
+            <Image source={Logo} style={styles.image} resizeMode="contain" />
+          </TouchableOpacity>
         </View>
       </View>
     </>
@@ -95,10 +103,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
   },
-  image: {
-    flex: 1,
-    width: "100%",
-    backgroundColor: "#0553",
-    alignSelf: "center",
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 64,
+    height: 64,
   },
+  
+  image: {
+    width: 64,
+    height: 64,
+  },
+
 });
