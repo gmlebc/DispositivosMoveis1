@@ -6,24 +6,25 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  TouchableWithoutFeedback,
   SafeAreaView,
-  ScrollView,
 } from "react-native";
 
-export default function Exe6() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+export default function Exe7() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [savedData, setSavedData] = useState<{
-    name: string;
-    age: string;
+    email: string;
+    password: string;
   } | null>(null);
 
-  const handleSave = () => {
-    if (name && age) {
-      setSavedData({ name, age });
+  const handleLogin = () => {
+    if (email && password) {
+      setSavedData({ email, password });
       Keyboard.dismiss();
     }
+
+    setEmail("");
+    setPassword("");
   };
 
   const dismissKeyboard = () => {
@@ -31,54 +32,67 @@ export default function Exe6() {
   };
 
   return (
-    <>
-    <View style={styles.master}>
+    <SafeAreaView style={styles.master}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Email:</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Digite seu email"
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect={false}
+            keyboardType="email-address"
+          />
+        </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>Nome:</Text>
-              <TextInput
-                style={styles.input}
-                value={name}
-                onChangeText={setName}
-                placeholder="Digite seu nome"
-              />
-            </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Senha:</Text>
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Digite sua senha"
+            secureTextEntry={true}
+            maxLength={8}
+          />
+        </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>Idade:</Text>
-              <TextInput
-                style={styles.input}
-                value={age}
-                onChangeText={setAge}
-                placeholder="Digite sua idade"
-                keyboardType="numeric"
-              />
-            </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Logar</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={handleSave}>
-              <Text style={styles.buttonText}>Salvar</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Cadastrar</Text>
+          </TouchableOpacity>
 
-            {savedData && (
-              <View>
-                <Text style={styles.text}>Dados Salvos:</Text>
-                <Text style={styles.text}>Nome: {savedData.name}</Text>
-                <Text style={styles.text}>Idade: {savedData.age} anos
-                </Text>
-              </View>
-            )}
-    </View>
-    </>
+        </View>
+
+        {savedData && (
+          <View style={styles.savedDataContainer}>
+            <Text style={styles.text}>Dados de Login:</Text>
+            <Text style={styles.text}>Email: {savedData.email}</Text>
+            <Text style={styles.text}>Senha: {savedData.password}</Text>
+          </View>
+        )}
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   master: {
     flex: 1,
+    backgroundColor: "#2F2F2F",
+  },
+  container: {
+    flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#2F2F2F",
-    padding: 10,
+    padding: 20,
   },
   inputContainer: {
     width: "100%",
@@ -99,20 +113,32 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#2396F1",
+    backgroundColor: "#F6B108",
     padding: 15,
     borderRadius: 8,
-    width: "100%",
     alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
+    flex: 1,
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
   },
+  savedDataContainer: {
+    marginTop: 30,
+    padding: 15,
+    backgroundColor: "#3F3F3F",
+    borderRadius: 8,
+  },
   text: {
     color: "white",
     fontSize: 16,
+    marginBottom: 5,
   },
+  buttonContainer: {
+    gap: 20,
+    justifyContent: "center",
+    flexDirection: "row",
+    },
 });

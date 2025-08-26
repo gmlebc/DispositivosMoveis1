@@ -2,10 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 import React from "react";
-// import { Image } from 'expo-image';
 import Logo from "../assets/adaptive-icon.png";
 
-export default function Um() {
+export default function Exe1() {
   return (
     <>
       {/* <StatusBar hidden /> */}
