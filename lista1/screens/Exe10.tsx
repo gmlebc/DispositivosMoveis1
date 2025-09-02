@@ -7,30 +7,35 @@ import {
   TouchableOpacity,
   Keyboard,
   SafeAreaView,
+  Switch
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-export default function exe9() {
+export default function exe10() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("user");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedData, setSavedData] = useState<{
+
     email: string;
     password: string;
     confirmPassword: string;
     userType: string;
+    isLoggedIn: boolean;
   } | null>(null);
 
   const handleSave = () => {
     if (email && password && confirmPassword === password) {
-      setSavedData({ email, password, confirmPassword, userType });
+      setSavedData({ email, password, confirmPassword, userType, isLoggedIn });
       Keyboard.dismiss();
     }
     setEmail("");
     setPassword("");
     setConfirmPassword("");
     setUserType("user");
+    setIsLoggedIn(false);
   };
 
   const dismissKeyboard = () => {
@@ -103,6 +108,16 @@ export default function exe9() {
             </View>
           </View>
 
+          <View style={styles.switchContainer}>
+            <Text style={styles.label}>Manter conectado:</Text>
+            <Switch
+              value={isLoggedIn}
+              onValueChange={setIsLoggedIn}
+              trackColor={{ false: "#e77878", true: "#94df83" }}
+              thumbColor={isLoggedIn ? "#47eb22" : "#ed1111"}
+            />
+          </View>
+
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={handleSave}>
               <Text style={styles.buttonText}>Cadastrar</Text>
@@ -112,17 +127,18 @@ export default function exe9() {
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
           </View>
-
-          
         </View>
+
         {savedData && (
             <View style={styles.savedDataContainer}>
               <Text style={styles.text2}>{savedData.email}-</Text>
               <Text style={styles.text2}>{savedData.password}-</Text>
               <Text style={styles.text2}>{savedData.confirmPassword}-</Text>
-              <Text style={styles.text2}>{savedData.userType}</Text>
+              <Text style={styles.text2}>{savedData.userType}-</Text>
+              <Text style={styles.text2}>{savedData.isLoggedIn ? "true" : "false"}</Text>
             </View>
           )}
+
       </SafeAreaView>
     </>
   );
@@ -219,5 +235,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     marginBottom: 5,
+  },
+  switchContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
   },
 });
