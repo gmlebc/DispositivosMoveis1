@@ -8,21 +8,29 @@ import {
   Keyboard,
   SafeAreaView,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
-export default function exe8() {
+export default function exe9() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [userType, setUserType] = useState("user");
   const [savedData, setSavedData] = useState<{
     email: string;
     password: string;
+    confirmPassword: string;
+    userType: string;
   } | null>(null);
 
   const handleSave = () => {
     if (email && password && confirmPassword === password) {
-      setSavedData({ email, password });
+      setSavedData({ email, password, confirmPassword, userType });
       Keyboard.dismiss();
     }
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setUserType("user");
   };
 
   const dismissKeyboard = () => {
@@ -31,8 +39,13 @@ export default function exe8() {
 
   return (
     <>
-    <SafeAreaView style={styles.master}>
-   
+      <SafeAreaView style={styles.master}>
+        <TouchableOpacity
+          style={StyleSheet.absoluteFill}
+          onPress={dismissKeyboard}
+          activeOpacity={1}
+        />
+
         <View style={styles.border}>
           <Text style={styles.title}>CADASTRE-SE</Text>
 
@@ -74,6 +87,22 @@ export default function exe8() {
             />
           </View>
 
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Tipo de Usuário:</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={userType}
+                onValueChange={(itemValue) => setUserType(itemValue)}
+                style={styles.picker}
+                dropdownIconColor="#fff"
+              >
+                <Picker.Item label="Administrador" value="admin" />
+                <Picker.Item label="Gestor" value="manager" />
+                <Picker.Item label="Usuário" value="user" />
+              </Picker>
+            </View>
+          </View>
+
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={handleSave}>
               <Text style={styles.buttonText}>Cadastrar</Text>
@@ -84,14 +113,16 @@ export default function exe8() {
             </TouchableOpacity>
           </View>
 
-          {savedData && (
-            <View>
-              <Text style={styles.text}>Dados Salvos:</Text>
-              <Text style={styles.text}>Email: {savedData.email}</Text>
-              <Text style={styles.text}>Senha: {savedData.password}</Text>
+          
+        </View>
+        {savedData && (
+            <View style={styles.savedDataContainer}>
+              <Text style={styles.text2}>{savedData.email}-</Text>
+              <Text style={styles.text2}>{savedData.password}-</Text>
+              <Text style={styles.text2}>{savedData.confirmPassword}-</Text>
+              <Text style={styles.text2}>{savedData.userType}</Text>
             </View>
           )}
-        </View>
       </SafeAreaView>
     </>
   );
@@ -145,33 +176,48 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     fontSize: 16,
   },
+  pickerContainer: {
+    backgroundColor: "white",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    overflow: "hidden",
+  },
+  picker: {
+    height: 50,
+    width: "100%",
+  },
   button: {
     backgroundColor: "#F6B108",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
+    flex: 1,
+    marginHorizontal: 5,
   },
   buttonText: {
-  
     color: "white",
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
   },
-  savedDataContainer: {
-    marginTop: 30,
-    padding: 15,
-    backgroundColor: "#3F3F3F",
-    borderRadius: 8,
-  },
+
   text: {
     color: "white",
     fontSize: 16,
     marginBottom: 5,
   },
   buttonContainer: {
-    gap: 20,
+    gap: 10,
     justifyContent: "center",
     flexDirection: "row",
+  },
+  savedDataContainer: {
+    flexDirection: "row",
+  },
+  text2: {
+    color: "white",
+    fontSize: 16,
+    marginBottom: 5,
   },
 });
