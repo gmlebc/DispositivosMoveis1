@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Exe10 from './screens/Exe10';
+import Exe11 from './screens/Exe11';
 
 export default function App() {
   return (
-    <Exe10 />
+    <Exe11 />
   );
 }
