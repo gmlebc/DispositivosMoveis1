@@ -11,6 +11,8 @@ export interface RootStackParamList extends ParamListBase {
   Oito: undefined;
   Nove: undefined;
   Dez: undefined;
+  ViaCEP: undefined;
+  Consultas: undefined;
 }
 
 export interface ViaCepResponse {

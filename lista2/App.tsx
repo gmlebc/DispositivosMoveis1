@@ -4,6 +4,8 @@ import { createDrawerNavigator, DrawerToggleButton } from '@react-navigation/dra
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+import { CepProvider } from './src/contexts/CepContext';
+
 import Um from './src/screens/Um';
 import Dois from './src/screens/Dois';
 import Tres from './src/screens/Tres';
@@ -15,14 +17,17 @@ import Oito from './src/screens/Oito';
 import Nove from './src/screens/Nove';
 import Dez from './src/screens/Dez';
 import { RootStackParamList } from './src/types';
+import ViaCEP from './src/screens/ViaCEP';
+import Consultas from './src/screens/Consultas';
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Drawer.Navigator
+      <CepProvider>
+        <NavigationContainer>
+          <Drawer.Navigator
           initialRouteName="Um"
           screenOptions={({ route }) => ({
             headerLeft: () => <DrawerToggleButton />,
@@ -60,6 +65,12 @@ export default function App() {
                 case 'Dez':
                   iconName = 'mail-open' as const;
                   break;
+                case 'ViaCEP':
+                  iconName = 'location' as const;
+                  break;
+                case 'Consultas':
+                  iconName = 'search' as const;
+                  break;
                 default:
                   iconName = 'apps-outline' as const;
               }
@@ -78,8 +89,11 @@ export default function App() {
           <Drawer.Screen name="Oito" component={Oito} options={{ title: 'Exercício 8' }} />
           <Drawer.Screen name="Nove" component={Nove} options={{ title: 'Exercício 9' }} />
           <Drawer.Screen name="Dez" component={Dez} options={{ title: 'Exercício 10' }} />
+          <Drawer.Screen name="ViaCEP" component={ViaCEP} options={{ title: 'Consulta ViaCEP' }} />
+          <Drawer.Screen name="Consultas" component={Consultas} options={{ title: 'Consulta de CEP' }} />
         </Drawer.Navigator>
       </NavigationContainer>
+      </CepProvider>
     </GestureHandlerRootView>
   );
 }

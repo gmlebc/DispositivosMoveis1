@@ -13,9 +13,6 @@ export type CepContextType = {
 
 export const CepContext = createContext<CepContextType>({} as CepContextType);
 
-// ... resto igual (Provider com historico/consultar/limpar)
-
-
 export function CepProvider({ children }: { children: React.ReactNode }) {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
