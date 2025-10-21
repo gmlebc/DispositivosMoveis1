@@ -14,6 +14,7 @@ import Sete from './src/screens/Sete';
 import Oito from './src/screens/Oito';
 import Nove from './src/screens/Nove';
 import Dez from './src/screens/Dez';
+import { RootStackParamList } from './src/types';
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
@@ -26,7 +27,44 @@ export default function App() {
           screenOptions={({ route }) => ({
             headerLeft: () => <DrawerToggleButton />,
             drawerIcon: ({ color, size }) => {
-              return <Ionicons name="menu" size={size} color={color} />;
+              let iconName;
+              
+              switch (route.name) {
+                case 'Um':
+                  iconName = 'logo-windows' as const;
+                  break;
+                case 'Dois':
+                  iconName = 'book' as const;
+                  break;
+                case 'Tres':
+                  iconName = 'apps' as const;
+                  break;
+                case 'Quatro':
+                  iconName = 'trending-up' as const;
+                  break;
+                case 'Cinco':
+                  iconName = 'business' as const;
+                  break;
+                case 'Seis':
+                  iconName = 'clipboard' as const;
+                  break;
+                case 'Sete':
+                  iconName = 'calculator' as const;
+                  break;
+                case 'Oito':
+                  iconName = 'finger-print' as const;
+                  break;
+                case 'Nove':
+                  iconName = 'key' as const;
+                  break;
+                case 'Dez':
+                  iconName = 'mail-open' as const;
+                  break;
+                default:
+                  iconName = 'apps-outline' as const;
+              }
+
+              return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}
         >
